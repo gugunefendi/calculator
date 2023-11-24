@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5">
+        <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">First Number</label>
+              <input type="text" id="firstNumber" value="" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Second Number</label>
+              <input type="text" id="secondNumber" class="form-control">
+            </div>
+            <button type="button" onclick="addition()" class="btn btn-primary">Additon (+)</button>
+            <button type="button" onclick="subtraction()" class="btn btn-primary">Subtraction (-)</button>
+            <button type="button" onclick="multiplication()" class="btn btn-primary">Multiplication (*)</button>
+            <button type="button" onclick="division()" class="btn btn-primary">Division (/)</button>
+          </form>
+        <div class="box mt-5">
+            <p id="result">
+
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function getNumbers() {
+            var firstNumber = parseFloat(document.getElementById("firstNumber").value);
+            var secondNumber = parseFloat(document.getElementById("secondNumber").value);
+            return { firstNumber, secondNumber };
+        }
+        function addition() {
+            var numbers = getNumbers();
+            var result = numbers.firstNumber + numbers.secondNumber;
+            document.getElementById("result").innerHTML = result;
+        }
+        
+        function subtraction() {
+            var numbers = getNumbers();
+            var result = numbers.firstNumber - numbers.secondNumber;
+            document.getElementById("result").innerHTML = result;
+        }
+    
+        function multiplication() {
+            var numbers = getNumbers();
+            var result = numbers.firstNumber * numbers.secondNumber;
+            document.getElementById("result").innerHTML = result;
+        }
+    
+        function division() {
+            var numbers = getNumbers();
+            var result = numbers.firstNumber / numbers.secondNumber;
+            document.getElementById("result").innerHTML = result;
+        }
+    </script>
+    
+</body>
+</html>
