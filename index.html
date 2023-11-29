@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="container mt-5">
+        <h1 class="mb-5">Simple Calculator</h1>
         <form>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">First Number</label>
@@ -21,6 +22,7 @@
             <button type="button" onclick="subtraction()" class="btn btn-primary">Subtraction (-)</button>
             <button type="button" onclick="multiplication()" class="btn btn-primary">Multiplication (*)</button>
             <button type="button" onclick="division()" class="btn btn-primary">Division (/)</button>
+            <button type="button" onclick="modulus()" class="btn btn-primary">Modulus (%)</button>
           </form>
         <div class="box mt-5">
             <p id="result">
@@ -56,6 +58,12 @@
         function division() {
             var numbers = getNumbers();
             var result = numbers.firstNumber / numbers.secondNumber;
+            document.getElementById("result").innerHTML = result;
+        }
+
+        function modulus() {
+            var numbers = getNumbers();
+            var result = numbers.firstNumber % numbers.secondNumber;
             document.getElementById("result").innerHTML = result;
         }
     </script>
