@@ -5,26 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        #result {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
         <h1 class="mb-5">Simple Calculator</h1>
         <form>
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">First Number</label>
+              <label class="form-label">First Number</label>
               <input type="text" id="firstNumber" value="" class="form-control">
             </div>
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Second Number</label>
+              <label class="form-label">Second Number</label>
               <input type="text" id="secondNumber" class="form-control">
             </div>
-            <button type="button" onclick="addition()" class="btn btn-primary">Additon (+)</button>
-            <button type="button" onclick="subtraction()" class="btn btn-primary">Subtraction (-)</button>
-            <button type="button" onclick="multiplication()" class="btn btn-primary">Multiplication (*)</button>
-            <button type="button" onclick="division()" class="btn btn-primary">Division (/)</button>
-            <button type="button" onclick="modulus()" class="btn btn-primary">Modulus (%)</button>
+            <button type="button" onclick="mathOperation('addition')" class="btn btn-primary">Additon (+)</button>
+            <button type="button" onclick="mathOperation('subtraction')" class="btn btn-primary">Subtraction (-)</button>
+            <button type="button" onclick="mathOperation('multiplication')" class="btn btn-primary">Multiplication (*)</button>
+            <button type="button" onclick="mathOperation('division')" class="btn btn-primary">Division (/)</button>
+            <button type="button" onclick="mathOperation('modulus')" class="btn btn-primary">Modulus (%)</button>
           </form>
         <div class="box mt-5">
+            <h3>Result</h3>
             <p id="result">
 
             </p>
@@ -37,34 +44,31 @@
             var secondNumber = parseFloat(document.getElementById("secondNumber").value);
             return { firstNumber, secondNumber };
         }
-        function addition() {
+        function mathOperation(operation) {
             var numbers = getNumbers();
-            var result = numbers.firstNumber + numbers.secondNumber;
-            document.getElementById("result").innerHTML = result;
-        }
-        
-        function subtraction() {
-            var numbers = getNumbers();
-            var result = numbers.firstNumber - numbers.secondNumber;
-            document.getElementById("result").innerHTML = result;
-        }
-    
-        function multiplication() {
-            var numbers = getNumbers();
-            var result = numbers.firstNumber * numbers.secondNumber;
-            document.getElementById("result").innerHTML = result;
-        }
-    
-        function division() {
-            var numbers = getNumbers();
-            var result = numbers.firstNumber / numbers.secondNumber;
-            document.getElementById("result").innerHTML = result;
-        }
+            var result = null;
 
-        function modulus() {
-            var numbers = getNumbers();
-            var result = numbers.firstNumber % numbers.secondNumber;
-            document.getElementById("result").innerHTML = result;
+            switch (operation) {
+                case 'addition':
+                    result = numbers.firstNumber + numbers.secondNumber;
+                    break;
+                case 'subtraction':
+                    result = numbers.firstNumber - numbers.secondNumber;
+                    break;
+                case 'multiplication': 
+                    result = numbers.firstNumber * numbers.secondNumber;
+                    break;
+                case 'division': 
+                    result = numbers.firstNumber / numbers.secondNumber;
+                    break;
+                case 'modulus': 
+                    result = numbers.firstNumber % numbers.secondNumber;
+                    break;
+                default:
+                    result = 'Invalid Operation';
+            }
+
+            document.getElementById('result').innerHTML = result;
         }
     </script>
     
